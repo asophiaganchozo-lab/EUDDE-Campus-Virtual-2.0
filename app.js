@@ -1,559 +1,659 @@
 
-// ==========================================
+// ============================================
 // EUDDE CAMPUS VIRTUAL
-// Archivo principal de funcionamiento
-// ==========================================
+// SISTEMA DE ACTIVIDADES Y EVALUACIONES
+// ============================================
 
-const cursos = {
-  "Primero de Bachillerato": {
-    "Informática": {
-      "Matemáticas": [
-        "Función", "Función afín", "Recta",
-        "Sistema de ecuaciones", "Vectores en el plano"
-      ],
-      "Física": [
-        "Movimiento rectilíneo uniforme (MRU)",
-        "Movimiento rectilíneo uniformemente variado (MRUV)",
-        "Movimiento circular uniforme (MCU)",
-        "Movimiento circular uniformemente variado (MCUV)",
-        "Leyes de Newton"
-      ],
-      "Lengua": [
-        "Neoclasicismo", "Comunicación para negocios",
-        "Ensayo argumentativo temático", "Eufemismos",
-        "Influencia de la globalización en el castellano"
-      ],
-      "Inglés": [
-        "Present Perfect", "Past Simple vs Past Continuous",
-        "Used to", "Vocabulario británico",
-        "Comparatives"
-      ],
-      "Emprendimiento": [
-        "Qué es emprender", "Tipos de emprendimiento",
-        "Idea de negocio", "Características del emprendedor",
-        "Necesidades y oportunidades"
-      ],
-      "Ética": [
-        "Valores y ética", "Derechos humanos",
-        "Convivencia y respeto", "Constitución del Ecuador",
-        "Ciudadanía"
-      ],
-      "Programación y Desarrollo de Software": [
-        "Lógica y algoritmos", "Variables",
-        "Condicionales y bucles", "Programación en Python",
-        "Programación orientada a objetos"
-      ],
-      "Diseño y Desarrollo Web": [
-        "HTML y CSS", "JavaScript básico",
-        "Diseño responsive", "Publicar una página web",
-        "Estructura de un sitio web"
-      ],
-      "Bases de Datos": [
-        "Modelo entidad-relación", "SQL",
-        "Llaves primarias y foráneas",
-        "Crear una base de datos real",
-        "Consultas y organización de datos"
-      ],
-      "Sistemas Operativos": [
-        "Windows y Linux", "Instalación y configuración",
-        "Gestión de archivos y usuarios",
-        "Comandos de terminal", "Administración del sistema"
-      ],
-      "Redes y Conectividad": [
-        "Tipos de redes LAN, WAN y WiFi",
-        "Direcciones IP y DNS", "Modelo OSI y TCP/IP",
-        "Configuración de router", "Conectividad de redes"
-      ],
-      "Soporte Técnico": [
-        "Partes de la computadora",
-        "Mantenimiento preventivo y correctivo",
-        "Instalación de programas y drivers",
-        "Diagnóstico de fallas", "Solución de problemas"
-      ],
-      "Aplicaciones Ofimáticas": [
-        "Word", "Excel", "PowerPoint",
-        "Google Drive y correo", "Documentos digitales"
-      ],
-      "Seguridad Informática": [
-        "Virus, malware y phishing",
-        "Contraseñas seguras y 2FA",
-        "Copias de seguridad", "Firewall y antivirus",
-        "Protección de información"
-      ],
-      "Inteligencia Artificial Aplicada": [
-        "Qué es la IA", "ChatGPT y herramientas de IA",
-        "Crear imágenes y textos con IA",
-        "Uso ético de la IA", "Aplicaciones de la IA"
-      ]
-    }
-  },
-
-  "Segundo de Bachillerato": {
-    "Informática": {
-      "Matemáticas": [
-        "Función cuadrática", "Función exponencial y logarítmica",
-        "Trigonometría", "Estadística y probabilidad",
-        "Progresiones"
-      ],
-      "Física": [
-        "Trabajo y energía", "Potencia",
-        "Impulso y cantidad de movimiento",
-        "Hidrostática", "Calor y temperatura"
-      ],
-      "Inglés": [
-        "Present Perfect Continuous", "First Conditional",
-        "Second Conditional", "Passive Voice",
-        "Phrasal Verbs"
-      ],
-      "Emprendimiento": [
-        "Modelo Canvas", "Estudio de mercado",
-        "Marketing y ventas", "Costos y presupuesto",
-        "Prototipo"
-      ],
-      "Especialidad Informática": [
-        "Programación avanzada", "Desarrollo web avanzado",
-        "Bases de datos avanzadas", "Redes avanzadas",
-        "Proyecto técnico"
-      ]
+const EUDDE = {
+  preguntasPorActividad: 15,
+  preguntasPorExamen: 20,
+  notaMaxima: 10,
+  cursos: {
+    "Primero de Bachillerato": {
+      "Informática": {
+        "Matemáticas": [
+          "Función",
+          "Función afín",
+          "Recta",
+          "Sistema de ecuaciones",
+          "Vectores en el plano"
+        ],
+        "Física": [
+          "MRU",
+          "MRUV",
+          "MCU",
+          "MCUV",
+          "Leyes de Newton"
+        ],
+        "Lengua": [
+          "Neoclasicismo",
+          "Comunicación para negocios",
+          "Ensayo argumentativo temático",
+          "Eufemismos",
+          "Globalización y castellano"
+        ],
+        "Inglés": [
+          "Present Perfect",
+          "Past Simple vs Past Continuous",
+          "Used to",
+          "Vocabulario británico",
+          "Comparatives"
+        ],
+        "Emprendimiento": [
+          "Qué es emprender",
+          "Tipos de emprendimiento",
+          "Idea de negocio",
+          "Características del emprendedor",
+          "Necesidades y oportunidades"
+        ],
+        "Ética": [
+          "Valores y ética",
+          "Derechos humanos",
+          "Convivencia y respeto",
+          "Constitución del Ecuador",
+          "Ciudadanía"
+        ],
+        "Programación y Desarrollo de Software": [
+          "Lógica y algoritmos",
+          "Variables",
+          "Condicionales y bucles",
+          "Programación en Python",
+          "Programación orientada a objetos"
+        ],
+        "Diseño y Desarrollo Web": [
+          "HTML y CSS",
+          "JavaScript básico",
+          "Diseño responsive",
+          "Publicar una página web",
+          "Estructura de un sitio web"
+        ],
+        "Bases de Datos": [
+          "Modelo entidad-relación",
+          "SQL",
+          "Llaves primarias y foráneas",
+          "Crear una base de datos",
+          "Consultas y organización de datos"
+        ],
+        "Sistemas Operativos": [
+          "Windows y Linux",
+          "Instalación y configuración",
+          "Gestión de archivos y usuarios",
+          "Comandos de terminal",
+          "Administración del sistema"
+        ],
+        "Redes y Conectividad": [
+          "Redes LAN, WAN y WiFi",
+          "Direcciones IP y DNS",
+          "Modelo OSI y TCP/IP",
+          "Configuración de router",
+          "Conectividad de redes"
+        ],
+        "Soporte Técnico": [
+          "Partes de la computadora",
+          "Mantenimiento preventivo y correctivo",
+          "Instalación de programas y drivers",
+          "Diagnóstico de fallas",
+          "Solución de problemas"
+        ],
+        "Aplicaciones Ofimáticas": [
+          "Word",
+          "Excel",
+          "PowerPoint",
+          "Google Drive y correo",
+          "Documentos digitales"
+        ],
+        "Seguridad Informática": [
+          "Virus, malware y phishing",
+          "Contraseñas seguras y 2FA",
+          "Copias de seguridad",
+          "Firewall y antivirus",
+          "Protección de información"
+        ],
+        "Inteligencia Artificial Aplicada": [
+          "Qué es la IA",
+          "ChatGPT y herramientas de IA",
+          "Crear imágenes y textos con IA",
+          "Uso ético de la IA",
+          "Aplicaciones de la IA"
+        ]
+      }
     },
 
-    "Ciencias": {
-      "Matemáticas": [
-        "Función cuadrática", "Función exponencial y logarítmica",
-        "Trigonometría", "Estadística y probabilidad",
-        "Progresiones"
-      ],
-      "Física": [
-        "Trabajo y energía", "Potencia",
-        "Impulso y cantidad de movimiento",
-        "Hidrostática", "Calor y temperatura"
-      ],
-      "Química": [
-        "Reacciones químicas", "Balanceo de ecuaciones",
-        "Ácidos y bases", "Tabla periódica avanzada",
-        "Estequiometría"
-      ],
-      "Biología": [
-        "Célula", "ADN y herencia",
-        "Ecosistemas", "Evolución",
-        "Sistemas del cuerpo"
-      ],
-      "Inglés": [
-        "Present Perfect Continuous", "First Conditional",
-        "Second Conditional", "Passive Voice",
-        "Phrasal Verbs"
-      ],
-      "Emprendimiento": [
-        "Modelo Canvas", "Estudio de mercado",
-        "Marketing", "Costos", "Prototipo"
-      ]
+    "Segundo de Bachillerato": {
+      "Informática": {
+        "Matemáticas": [
+          "Función cuadrática",
+          "Función exponencial y logarítmica",
+          "Trigonometría",
+          "Estadística y probabilidad",
+          "Progresiones"
+        ],
+        "Física": [
+          "Trabajo y energía",
+          "Potencia",
+          "Impulso y cantidad de movimiento",
+          "Hidrostática",
+          "Calor y temperatura"
+        ],
+        "Inglés": [
+          "Present Perfect Continuous",
+          "First Conditional",
+          "Second Conditional",
+          "Passive Voice",
+          "Phrasal Verbs"
+        ],
+        "Emprendimiento": [
+          "Modelo Canvas",
+          "Estudio de mercado",
+          "Marketing y ventas",
+          "Costos y presupuesto",
+          "Prototipo"
+        ],
+        "Especialidad Informática": [
+          "Programación avanzada",
+          "Desarrollo web avanzado",
+          "Bases de datos avanzadas",
+          "Redes avanzadas",
+          "Proyecto técnico"
+        ]
+      },
+      "Ciencias": {
+        "Matemáticas": [
+          "Función cuadrática",
+          "Función exponencial y logarítmica",
+          "Trigonometría",
+          "Estadística y probabilidad",
+          "Progresiones"
+        ],
+        "Física": [
+          "Trabajo y energía",
+          "Potencia",
+          "Impulso y cantidad de movimiento",
+          "Hidrostática",
+          "Calor y temperatura"
+        ],
+        "Química": [
+          "Reacciones químicas",
+          "Balanceo de ecuaciones",
+          "Ácidos y bases",
+          "Tabla periódica avanzada",
+          "Estequiometría"
+        ],
+        "Biología": [
+          "Célula",
+          "ADN y herencia",
+          "Ecosistemas",
+          "Evolución",
+          "Sistemas del cuerpo"
+        ],
+        "Inglés": [
+          "Present Perfect Continuous",
+          "First Conditional",
+          "Second Conditional",
+          "Passive Voice",
+          "Phrasal Verbs"
+        ],
+        "Emprendimiento": [
+          "Modelo Canvas",
+          "Estudio de mercado",
+          "Marketing",
+          "Costos",
+          "Prototipo"
+        ]
+      },
+      "Contabilidad": {
+        "Matemáticas": [
+          "Función cuadrática",
+          "Función exponencial",
+          "Trigonometría",
+          "Estadística",
+          "Progresiones"
+        ],
+        "Contabilidad General": [
+          "Activo, pasivo y patrimonio",
+          "Libro diario",
+          "Libro mayor",
+          "Balance general",
+          "Estado de resultados"
+        ],
+        "Inglés": [
+          "Present Perfect Continuous",
+          "First Conditional",
+          "Second Conditional",
+          "Passive Voice",
+          "Phrasal Verbs"
+        ],
+        "Emprendimiento": [
+          "Modelo Canvas",
+          "Estudio de mercado",
+          "Marketing",
+          "Costos",
+          "Prototipo"
+        ]
+      }
     },
 
-    "Contabilidad": {
-      "Matemáticas": [
-        "Función cuadrática", "Función exponencial",
-        "Trigonometría", "Estadística",
-        "Progresiones"
-      ],
-      "Contabilidad General": [
-        "Activo, pasivo y patrimonio", "Libro diario",
-        "Libro mayor", "Balance general",
-        "Estado de resultados"
-      ],
-      "Inglés": [
-        "Present Perfect Continuous", "First Conditional",
-        "Second Conditional", "Passive Voice",
-        "Phrasal Verbs"
-      ],
-      "Emprendimiento": [
-        "Modelo Canvas", "Estudio de mercado",
-        "Marketing", "Costos", "Prototipo"
-      ]
-    }
-  },
-
-  "Tercero de Bachillerato": {
-    "Informática": {
-      "Matemáticas": [
-        "Límites", "Derivadas", "Integrales básicas",
-        "Geometría en el espacio", "Matemática financiera"
-      ],
-      "Física": [
-        "Ondas y sonido", "Óptica",
-        "Electricidad: Ley de Ohm", "Magnetismo",
-        "Física moderna"
-      ],
-      "Inglés": [
-        "Reported Speech", "Third Conditional",
-        "Relative Clauses", "Formal Letter",
-        "Vocabulary for Work: CV e Interview"
-      ],
-      "Emprendimiento": [
-        "Plan de negocios", "Finanzas y rentabilidad",
-        "Marca y publicidad", "Emprendimiento social",
-        "Pitch"
-      ],
-      "Especialidad Informática": [
-        "Proyecto final de software",
-        "Desarrollo de aplicación o página web completa",
-        "Base de datos del proyecto",
-        "Presentación y defensa",
-        "Documentación del proyecto"
-      ]
-    },
-
-    "Ciencias": {
-      "Matemáticas": [
-        "Límites", "Derivadas", "Integrales",
-        "Geometría en el espacio", "Matemática financiera"
-      ],
-      "Física": [
-        "Ondas y sonido", "Óptica",
-        "Electricidad", "Magnetismo", "Física moderna"
-      ],
-      "Química": [
-        "Química orgánica", "pH",
-        "Reacciones redox", "Gases", "Soluciones"
-      ],
-      "Biología": [
-        "Genética avanzada", "Biotecnología",
-        "Salud y enfermedades", "Medio ambiente",
-        "Proyecto de investigación"
-      ],
-      "Inglés": [
-        "Reported Speech", "Third Conditional",
-        "Relative Clauses", "Formal Letter",
-        "Vocabulary for Work"
-      ],
-      "Emprendimiento": [
-        "Plan de negocios", "Finanzas",
-        "Marca", "Emprendimiento social", "Pitch"
-      ]
-    },
-
-    "Contabilidad": {
-      "Matemáticas": [
-        "Límites", "Derivadas", "Integrales",
-        "Geometría en el espacio", "Matemática financiera"
-      ],
-      "Contabilidad Avanzada": [
-        "Contabilidad de costos", "Inventarios",
-        "Nómina y roles de pago",
-        "Impuestos: IVA y Renta",
-        "Auditoría básica"
-      ],
-      "Inglés": [
-        "Reported Speech", "Third Conditional",
-        "Relative Clauses", "Formal Letter",
-        "Vocabulary for Work"
-      ],
-      "Emprendimiento": [
-        "Plan de negocios", "Finanzas",
-        "Marca", "Emprendimiento social", "Pitch"
-      ]
+    "Tercero de Bachillerato": {
+      "Informática": {
+        "Matemáticas": [
+          "Límites",
+          "Derivadas",
+          "Integrales básicas",
+          "Geometría en el espacio",
+          "Matemática financiera"
+        ],
+        "Física": [
+          "Ondas y sonido",
+          "Óptica",
+          "Electricidad: Ley de Ohm",
+          "Magnetismo",
+          "Física moderna"
+        ],
+        "Inglés": [
+          "Reported Speech",
+          "Third Conditional",
+          "Relative Clauses",
+          "Formal Letter",
+          "Vocabulary for Work"
+        ],
+        "Emprendimiento": [
+          "Plan de negocios",
+          "Finanzas y rentabilidad",
+          "Marca y publicidad",
+          "Emprendimiento social",
+          "Pitch"
+        ],
+        "Especialidad Informática": [
+          "Proyecto final de software",
+          "Desarrollo de aplicación o web completa",
+          "Base de datos del proyecto",
+          "Presentación y defensa",
+          "Documentación del proyecto"
+        ]
+      },
+      "Ciencias": {
+        "Matemáticas": [
+          "Límites",
+          "Derivadas",
+          "Integrales",
+          "Geometría en el espacio",
+          "Matemática financiera"
+        ],
+        "Física": [
+          "Ondas y sonido",
+          "Óptica",
+          "Electricidad",
+          "Magnetismo",
+          "Física moderna"
+        ],
+        "Química": [
+          "Química orgánica",
+          "pH",
+          "Reacciones redox",
+          "Gases",
+          "Soluciones"
+        ],
+        "Biología": [
+          "Genética avanzada",
+          "Biotecnología",
+          "Salud y enfermedades",
+          "Medio ambiente",
+          "Proyecto de investigación"
+        ],
+        "Inglés": [
+          "Reported Speech",
+          "Third Conditional",
+          "Relative Clauses",
+          "Formal Letter",
+          "Vocabulary for Work"
+        ],
+        "Emprendimiento": [
+          "Plan de negocios",
+          "Finanzas",
+          "Marca",
+          "Emprendimiento social",
+          "Pitch"
+        ]
+      },
+      "Contabilidad": {
+        "Matemáticas": [
+          "Límites",
+          "Derivadas",
+          "Integrales",
+          "Geometría en el espacio",
+          "Matemática financiera"
+        ],
+        "Contabilidad Avanzada": [
+          "Contabilidad de costos",
+          "Inventarios",
+          "Nómina y roles de pago",
+          "Impuestos: IVA y Renta",
+          "Auditoría básica"
+        ],
+        "Inglés": [
+          "Reported Speech",
+          "Third Conditional",
+          "Relative Clauses",
+          "Formal Letter",
+          "Vocabulary for Work"
+        ],
+        "Emprendimiento": [
+          "Plan de negocios",
+          "Finanzas",
+          "Marca",
+          "Emprendimiento social",
+          "Pitch"
+        ]
+      }
     }
   }
 };
 
-// Elemento donde aparecerán las pantallas de los cursos
-const contenido = document.createElement("section");
-contenido.id = "contenido-cursos";
-contenido.style.cssText = `
-  display:none;
-  padding:35px 8%;
-  background:#f3faff;
-  min-height:400px;
-`;
-document.querySelector("main").appendChild(contenido);
+// Preguntas de práctica iniciales.
+// Cada pregunta tiene una respuesta correcta identificada.
+const bancoPreguntas = {
+  "Función": [
+    {
+      pregunta: "¿Qué representa una función matemática?",
+      opciones: [
+        "Una relación que asigna una salida a cada entrada",
+        "Una operación de suma solamente",
+        "Un conjunto sin relación",
+        "Una figura geométrica"
+      ],
+      correcta: 0,
+      explicacion: "Una función asigna exactamente un valor de salida a cada valor de entrada."
+    },
+    {
+      pregunta: "Si f(x) = x + 3, ¿cuánto vale f(2)?",
+      opciones: ["3", "5", "6", "9"],
+      correcta: 1,
+      explicacion: "Se reemplaza x por 2: f(2) = 2 + 3 = 5."
+    },
+    {
+      pregunta: "En una función, ¿cómo se llama el valor que se introduce?",
+      opciones: ["Imagen", "Variable independiente", "Resultado", "Pendiente"],
+      correcta: 1,
+      explicacion: "La variable independiente es el valor que se introduce."
+    },
+    {
+      pregunta: "Si f(x) = 2x, ¿cuánto vale f(4)?",
+      opciones: ["2", "4", "6", "8"],
+      correcta: 3,
+      explicacion: "f(4) = 2 × 4 = 8."
+    },
+    {
+      pregunta: "¿Qué símbolo se utiliza frecuentemente para representar una función?",
+      opciones: ["f(x)", "π", "√", "∞"],
+      correcta: 0,
+      explicacion: "La notación f(x) representa el valor de una función en x."
+    }
+  ],
 
-// Pantalla de selección de curso
-function seleccionarCurso(curso, especialidad) {
-  mostrarMaterias(curso, especialidad);
+  "MRU": [
+    {
+      pregunta: "¿Qué significa MRU?",
+      opciones: [
+        "Movimiento rectilíneo uniforme",
+        "Movimiento rápido universal",
+        "Movimiento rotatorio uniforme",
+        "Movimiento relativo unitario"
+      ],
+      correcta: 0,
+      explicacion: "MRU significa movimiento rectilíneo uniforme."
+    },
+    {
+      pregunta: "¿Qué característica tiene el MRU?",
+      opciones: [
+        "La velocidad cambia constantemente",
+        "La velocidad es constante",
+        "La aceleración aumenta",
+        "El objeto siempre está detenido"
+      ],
+      correcta: 1,
+      explicacion: "En el MRU la velocidad permanece constante."
+    },
+    {
+      pregunta: "¿Cuál es la fórmula de distancia en MRU?",
+      opciones: ["d = v × t", "d = m × a", "d = v / t", "d = F × m"],
+      correcta: 0,
+      explicacion: "La distancia se obtiene multiplicando velocidad por tiempo."
+    },
+    {
+      pregunta: "Un automóvil viaja a 20 km/h durante 2 horas. ¿Qué distancia recorre?",
+      opciones: ["10 km", "20 km", "40 km", "60 km"],
+      correcta: 2,
+      explicacion: "d = 20 × 2 = 40 km."
+    },
+    {
+      pregunta: "¿Qué unidad puede utilizarse para medir la velocidad?",
+      opciones: ["Kilogramos", "Metros por segundo", "Litros", "Grados"],
+      correcta: 1,
+      explicacion: "La velocidad puede expresarse en metros por segundo (m/s)."
+    }
+  ]
+};
+
+// Generar preguntas disponibles para un tema.
+// No se inventan preguntas para completar los cuestionarios:
+// si falta el banco completo, se informa al estudiante.
+function obtenerPreguntas(tema, cantidad) {
+  const disponibles = bancoPreguntas[tema] || [];
+
+  if (disponibles.length < cantidad) {
+    return null;
+  }
+
+  const mezcladas = [...disponibles].sort(() => Math.random() - 0.5);
+  return mezcladas.slice(0, cantidad);
 }
 
-// Mostrar especialidades
-function mostrarEspecialidades(curso) {
-  contenido.style.display = "block";
+// Estado de la evaluación activa
+let evaluacionActual = null;
+let indicePregunta = 0;
+let respuestasUsuario = [];
 
-  const especialidades = Object.keys(cursos[curso]);
+// Iniciar una evaluación
+function iniciarEvaluacion(tema, tipo = "actividad") {
+  const cantidad = tipo === "examen"
+    ? EUDDE.preguntasPorExamen
+    : EUDDE.preguntasPorActividad;
 
-  contenido.innerHTML = `
-    <button class="volver" onclick="volverInicio()">← Volver al inicio</button>
-    <h2>${curso}</h2>
-    <p>Selecciona tu especialidad para continuar.</p>
-    <div class="tarjetas-cursos">
-      ${especialidades.map(especialidad => `
-        <button class="tarjeta-opcion"
-          onclick="mostrarMaterias('${curso}', '${especialidad}')">
-          <span>🎓</span>
-          <h3>${especialidad}</h3>
-          <p>Ver materias y módulos</p>
-        </button>
-      `).join("")}
-    </div>
-  `;
+  const preguntas = obtenerPreguntas(tema, cantidad);
 
-  contenido.scrollIntoView({ behavior: "smooth" });
-}
-
-// Mostrar materias
-function mostrarMaterias(curso, especialidad) {
-  const materias = cursos[curso]?.[especialidad];
-
-  if (!materias) {
-    alert("No se encontraron las materias de este curso.");
+  if (!preguntas) {
+    alert(
+      `El banco de preguntas de "${tema}" todavía no está completo. ` +
+      `Se necesitan ${cantidad} preguntas para iniciar esta evaluación.`
+    );
     return;
   }
 
-  contenido.style.display = "block";
+  evaluacionActual = {
+    tema,
+    tipo,
+    preguntas
+  };
 
-  contenido.innerHTML = `
-    <button class="volver" onclick="volverInicio()">← Inicio</button>
-    <button class="volver" onclick="mostrarEspecialidades('${curso}')">
-      ← Especialidades
-    </button>
-    <span class="etiqueta">EUDDE CAMPUS VIRTUAL</span>
-    <h2>${curso}</h2>
-    <h3>${especialidad}</h3>
-    <p>Selecciona una materia para ver sus cinco módulos.</p>
+  indicePregunta = 0;
+  respuestasUsuario = Array(cantidad).fill(null);
 
-    <div class="tarjetas-cursos">
-      ${Object.entries(materias).map(([materia, temas]) => `
-        <button class="tarjeta-opcion"
-          onclick="mostrarModulos('${curso}', '${especialidad}', '${materia}')">
-          <span>📘</span>
-          <h3>${materia}</h3>
-          <p>5 módulos de aprendizaje</p>
+  mostrarPregunta();
+}
+
+// Mostrar una pregunta
+function mostrarPregunta() {
+  const pregunta = evaluacionActual.preguntas[indicePregunta];
+  const zona = document.getElementById("contenido-cursos");
+
+  if (!zona) return;
+
+  const progreso =
+    ((indicePregunta + 1) / evaluacionActual.preguntas.length) * 100;
+
+  zona.innerHTML = `
+    <div class="evaluacion">
+      <button class="volver" onclick="salirEvaluacion()">
+        ← Salir de la evaluación
+      </button>
+
+      <div class="evaluacion-cabecera">
+        <span>${evaluacionActual.tipo === "examen"
+          ? "EXAMEN FINAL"
+          : "ACTIVIDAD DEL MÓDULO"}</span>
+        <h2>${evaluacionActual.tema}</h2>
+        <p>Pregunta ${indicePregunta + 1} de
+          ${evaluacionActual.preguntas.length}</p>
+      </div>
+
+      <div class="barra-progreso">
+        <div style="width:${progreso}%"></div>
+      </div>
+
+      <div class="pregunta-tarjeta">
+        <h3>${indicePregunta + 1}. ${pregunta.pregunta}</h3>
+
+        <div class="opciones-pregunta">
+          ${pregunta.opciones.map((opcion, i) => `
+            <label class="opcion">
+              <input
+                type="radio"
+                name="respuesta"
+                value="${i}"
+                ${respuestasUsuario[indicePregunta] === i ? "checked" : ""}
+                onchange="guardarRespuesta(${i})"
+              >
+              <span>${opcion}</span>
+            </label>
+          `).join("")}
+        </div>
+      </div>
+
+      <div class="controles-evaluacion">
+        <button onclick="preguntaAnterior()"
+          ${indicePregunta === 0 ? "disabled" : ""}>
+          Anterior
         </button>
-      `).join("")}
+
+        ${
+          indicePregunta === evaluacionActual.preguntas.length - 1
+          ? `<button class="entregar" onclick="entregarEvaluacion()">
+              Entregar evaluación
+            </button>`
+          : `<button class="siguiente" onclick="preguntaSiguiente()">
+              Siguiente →
+            </button>`
+        }
+      </div>
     </div>
   `;
-
-  contenido.scrollIntoView({ behavior: "smooth" });
 }
 
-// Mostrar módulos de cada materia
-function mostrarModulos(curso, especialidad, materia) {
-  const temas = cursos[curso][especialidad][materia];
-
-  contenido.innerHTML = `
-    <button class="volver"
-      onclick="mostrarMaterias('${curso}', '${especialidad}')">
-      ← Volver a materias
-    </button>
-    <span class="etiqueta">${especialidad}</span>
-    <h2>${materia}</h2>
-    <p>Selecciona uno de los cinco módulos.</p>
-
-    <div class="lista-modulos">
-      ${temas.map((tema, indice) => `
-        <article class="modulo">
-          <div>
-            <span class="numero-modulo">MÓDULO ${indice + 1}</span>
-            <h3>${tema}</h3>
-            <p>Clase, ejemplos, video y práctica.</p>
-          </div>
-          <button onclick="abrirModulo('${curso}', '${especialidad}', '${materia}', ${indice})">
-            Entrar
-          </button>
-        </article>
-      `).join("")}
-    </div>
-  `;
-
-  contenido.scrollIntoView({ behavior: "smooth" });
+function guardarRespuesta(opcion) {
+  respuestasUsuario[indicePregunta] = opcion;
 }
 
-// Abrir el contenido del módulo
-function abrirModulo(curso, especialidad, materia, indice) {
-  const tema = cursos[curso][especialidad][materia][indice];
-  const esPractica = materia === "Matemáticas" || materia === "Física";
+function preguntaSiguiente() {
+  if (respuestasUsuario[indicePregunta] === null) {
+    alert("Selecciona una respuesta antes de continuar.");
+    return;
+  }
 
-  contenido.innerHTML = `
-    <button class="volver"
-      onclick="mostrarModulos('${curso}', '${especialidad}', '${materia}')">
-      ← Volver a módulos
-    </button>
-
-    <span class="etiqueta">MÓDULO ${indice + 1}</span>
-    <h2>${tema}</h2>
-
-    <div class="contenido-modulo">
-      <article class="bloque-aprendizaje">
-        <h3>📖 Clase</h3>
-        <p>En esta sección estará la explicación completa de ${tema},
-        con conceptos, ejemplos y material de aprendizaje.</p>
-      </article>
-
-      <article class="bloque-aprendizaje">
-        <h3>🎥 Video educativo</h3>
-        <p>Busca material audiovisual relacionado con este tema.</p>
-        <a target="_blank" rel="noopener noreferrer"
-          href="https://www.youtube.com/results?search_query=${encodeURIComponent(tema + " explicación educativa")}"
-          class="boton-azul">Ver videos educativos</a>
-      </article>
-
-      <article class="bloque-aprendizaje">
-        <h3>${esPractica ? "🧮 Ejercicios y procedimientos" : "✍️ Actividad práctica"}</h3>
-        <p>${esPractica
-          ? "Aquí se incluirán fórmulas, ejercicios resueltos paso a paso y problemas para practicar."
-          : "Aquí se incluirán ejemplos, ejercicios y actividades relacionadas con el tema."}
-        </p>
-      </article>
-
-      <article class="bloque-aprendizaje">
-        <h3>📝 Actividad del módulo</h3>
-        <p>15 preguntas de selección múltiple. Se calificará sobre 10.</p>
-        <button class="boton-azul"
-          onclick="alert('El banco de 15 preguntas de este tema se incorporará en la siguiente etapa.')">
-          Actividad
-        </button>
-      </article>
-    </div>
-  `;
-
-  contenido.scrollIntoView({ behavior: "smooth" });
+  if (indicePregunta < evaluacionActual.preguntas.length - 1) {
+    indicePregunta++;
+    mostrarPregunta();
+  }
 }
 
-// Volver a la página de inicio
-function volverInicio() {
-  contenido.style.display = "none";
-  document.getElementById("inicio").scrollIntoView({
-    behavior: "smooth"
-  });
+function preguntaAnterior() {
+  if (indicePregunta > 0) {
+    indicePregunta--;
+    mostrarPregunta();
+  }
 }
 
-// Estilos adicionales de las pantallas internas
-const estilos = document.createElement("style");
-
-estilos.textContent = `
-  #contenido-cursos h2 {
-    color:#20364d;
-    font-size:30px;
-    margin:12px 0;
+// Calcular resultado
+function entregarEvaluacion() {
+  if (respuestasUsuario.some(r => r === null)) {
+    alert("Debes responder todas las preguntas antes de entregar.");
+    return;
   }
 
-  #contenido-cursos h3 {
-    color:#20364d;
-  }
+  const preguntas = evaluacionActual.preguntas;
+  let correctas = 0;
 
-  #contenido-cursos p {
-    color:#718096;
-    margin:7px 0 18px;
-  }
-
-  .etiqueta {
-    display:inline-block;
-    color:#168bc5;
-    font-size:12px;
-    font-weight:800;
-    letter-spacing:1.5px;
-  }
-
-  .tarjetas-cursos {
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
-    gap:18px;
-    margin-top:25px;
-  }
-
-  .tarjeta-opcion {
-    border:1px solid #dcecf6;
-    background:white;
-    border-radius:15px;
-    padding:25px;
-    text-align:left;
-    cursor:pointer;
-    transition:.2s;
-  }
-
-  .tarjeta-opcion:hover {
-    transform:translateY(-4px);
-    border-color:#58b9e9;
-    box-shadow:0 8px 22px #cdeafa;
-  }
-
-  .tarjeta-opcion span {
-    font-size:30px;
-  }
-
-  .tarjeta-opcion h3 {
-    margin-top:12px;
-  }
-
-  .volver {
-    border:0;
-    background:#e3f5ff;
-    color:#168bc5;
-    padding:10px 16px;
-    border-radius:8px;
-    margin:0 8px 22px 0;
-    cursor:pointer;
-    font-weight:700;
-  }
-
-  .lista-modulos {
-    display:grid;
-    gap:14px;
-    margin-top:25px;
-  }
-
-  .modulo {
-    background:white;
-    border:1px solid #dcecf6;
-    border-radius:13px;
-    padding:20px;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    gap:15px;
-  }
-
-  .numero-modulo {
-    color:#168bc5;
-    font-size:11px;
-    font-weight:800;
-  }
-
-  .modulo p {
-    margin-bottom:0 !important;
-  }
-
-  .modulo button,
-  .boton-azul {
-    display:inline-block;
-    border:0;
-    background:#58b9e9;
-    color:white;
-    padding:11px 19px;
-    border-radius:8px;
-    font-weight:700;
-    cursor:pointer;
-    text-decoration:none;
-    white-space:nowrap;
-  }
-
-  .contenido-modulo {
-    display:grid;
-    gap:18px;
-    margin-top:25px;
-  }
-
-  .bloque-aprendizaje {
-    background:white;
-    padding:23px;
-    border:1px solid #dcecf6;
-    border-radius:13px;
-  }
-
-  @media(max-width:600px) {
-    .modulo {
-      align-items:flex-start;
-      flex-direction:column;
+  preguntas.forEach((pregunta, i) => {
+    if (respuestasUsuario[i] === pregunta.correcta) {
+      correctas++;
     }
+  });
+
+  const nota = Number(
+    (correctas / preguntas.length * EUDDE.notaMaxima).toFixed(2)
+  );
+
+  mostrarResultado(correctas, preguntas.length, nota);
+}
+
+// Mostrar calificación y explicación
+function mostrarResultado(correctas, total, nota) {
+  const zona = document.getElementById("contenido-cursos");
+
+  const detalle = evaluacionActual.preguntas.map((p, i) => {
+    const acertada = respuestasUsuario[i] === p.correcta;
+
+    return `
+      <article class="resultado-pregunta">
+        <h4>${i + 1}. ${p.pregunta}</h4>
+        <p>${acertada ? "✅ Respuesta correcta" : "❌ Respuesta incorrecta"}</p>
+        <p><strong>Respuesta correcta:</strong> ${p.opciones[p.correcta]}</p>
+        <p>${p.explicacion || ""}</p>
+      </article>
+    `;
+  }).join("");
+
+  zona.innerHTML = `
+    <div class="resultado-final">
+      <span>RESULTADO DE LA EVALUACIÓN</span>
+      <h2>${nota} / 10</h2>
+      <h3>${correctas} de ${total} respuestas correctas</h3>
+      <p>${nota >= 7
+        ? "¡Buen trabajo! Has alcanzado la nota de aprobación."
+        : "Sigue practicando y vuelve a intentarlo cuando estés preparado."}</p>
+
+      <div class="detalle-resultados">
+        ${detalle}
+      </div>
+
+      <button class="siguiente" onclick="volverInicio()">
+        Volver al inicio
+      </button>
+    </div>
+  `;
+}
+
+function salirEvaluacion() {
+  if (confirm("¿Deseas salir? Se perderán las respuestas de esta evaluación.")) {
+    evaluacionActual = null;
+    volverInicio();
   }
-`;
+}
 
-document.head.appendChild(estilos);
+// Guardar la nota de manera local en este navegador
+function guardarNotaLocal(tema, tipo, nota) {
+  const historial = JSON.parse(
+    localStorage.getItem("eudde_calificaciones") || "[]"
+  );
 
-console.log("EUDDE Campus Virtual está iniciado correctamente.");
+  historial.push({
+    tema,
+    tipo,
+    nota,
+    fecha: new Date().toLocaleDateString("es-EC")
+  });
+
+  localStorage.setItem(
+    "eudde_calificaciones",
+    JSON.stringify(historial)
+  );
+}
