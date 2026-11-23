@@ -1,0 +1,147 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#eaf7ff">
+  <meta name="description" content="EUDDE Campus Virtual - Plataforma educativa">
+  <title>EUDDE Campus Virtual</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#">
+      <span class="brand-icon">E</span>
+      <span>EUDDE <small>Campus Virtual</small></span>
+    </a>
+    <nav>
+      <a href="#inicio">Inicio</a>
+      <a href="#cursos">Cursos</a>
+      <a href="#nosotros">Nosotros</a>
+    </nav>
+    <a class="login-link" href="#cursos">Ingresar</a>
+  </header>
+
+  <main>
+    <section class="hero" id="inicio">
+      <div class="hero-content">
+        <span class="eyebrow">TU ESPACIO PARA APRENDER</span>
+        <h1>Aprende, descubre y construye tu futuro.</h1>
+        <p>
+          Bienvenido a EUDDE Campus Virtual, un espacio educativo
+          para aprender a tu ritmo, desarrollar habilidades y alcanzar
+          nuevas metas.
+        </p>
+        <a class="primary-button" href="#cursos">Explorar cursos</a>
+      </div>
+      <div class="hero-image">
+        <img
+          src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=900"
+          alt="Estudiantes aprendiendo juntos">
+      </div>
+    </section>
+
+    <section class="welcome" id="nosotros">
+      <span class="eyebrow">BIENVENIDOS</span>
+      <h2>Un mundo de conocimientos a tu alcance</h2>
+      <p>
+        Explora tus materias, revisa las clases, realiza actividades
+        y comprueba lo que has aprendido mediante evaluaciones.
+      </p>
+    </section>
+
+    <section class="courses" id="cursos">
+      <div class="section-heading">
+        <div>
+          <span class="eyebrow">PLATAFORMA EDUCATIVA</span>
+          <h2>Selecciona tu nivel académico</h2>
+        </div>
+        <p>Encuentra tu curso y continúa aprendiendo.</p>
+      </div>
+
+      <div class="course-grid">
+        <article class="course-card">
+          <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?w=700"
+               alt="Aula escolar">
+          <div class="course-info">
+            <span class="course-tag">EDUCACIÓN GENERAL</span>
+            <h3>Décimo EGB</h3>
+            <p>Aprende y fortalece tus conocimientos en las diferentes materias.</p>
+            <button onclick="seleccionarCurso('Décimo EGB', 'General')">
+              Entrar al curso
+            </button>
+          </div>
+        </article>
+
+        <article class="course-card">
+          <img src="https://images.unsplash.com/photo-1523580846011-d3a5bc25702b?w=700"
+               alt="Estudiantes de bachillerato">
+          <div class="course-info">
+            <span class="course-tag">BACHILLERATO</span>
+            <h3>Primero de Bachillerato</h3>
+            <p>Continúa tu formación en la especialidad de Informática.</p>
+            <button onclick="seleccionarCurso('Primero de Bachillerato', 'Informática')">
+              Entrar al curso
+            </button>
+          </div>
+        </article>
+
+        <article class="course-card">
+          <img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=700"
+               alt="Libros y materiales de estudio">
+          <div class="course-info">
+            <span class="course-tag">BACHILLERATO</span>
+            <h3>Segundo de Bachillerato</h3>
+            <p>Escoge tu especialidad y accede a tus materias.</p>
+            <button onclick="mostrarEspecialidades('Segundo de Bachillerato')">
+              Ver especialidades
+            </button>
+          </div>
+        </article>
+
+        <article class="course-card">
+          <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=700"
+               alt="Graduación estudiantil">
+          <div class="course-info">
+            <span class="course-tag">BACHILLERATO</span>
+            <h3>Tercero de Bachillerato</h3>
+            <p>Prepárate para culminar tu etapa de bachillerato.</p>
+            <button onclick="mostrarEspecialidades('Tercero de Bachillerato')">
+              Ver especialidades
+            </button>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="features">
+      <div>
+        <span>📚</span>
+        <h3>Clases y módulos</h3>
+        <p>Contenido organizado para aprender paso a paso.</p>
+      </div>
+      <div>
+        <span>✏️</span>
+        <h3>Actividades</h3>
+        <p>Practica lo aprendido con diferentes actividades.</p>
+      </div>
+      <div>
+        <span>🏆</span>
+        <h3>Evaluaciones</h3>
+        <p>Comprueba tus conocimientos y revisa tu progreso.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="brand">
+      <span class="brand-icon">E</span>
+      <span>EUDDE <small>Campus Virtual</small></span>
+    </div>
+    <p>© 2026 EUDDE Campus Virtual. Todos los derechos reservados.</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
